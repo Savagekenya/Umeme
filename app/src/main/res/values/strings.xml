@@ -2,4 +2,5 @@
     <string name="app_name">Umeme</string>
     <string name="sign_up"><u>Sign Up</u></string>
     <string name="already_have_an_account_login_here"><u>Login Here</u></string>
+    <string name="reset">forgot password?</string>
 </resources>

@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText usernameEt,emailEt,phone_numberEt, passwordEt;
+    EditText tokenEt,emailEt,phone_numberEt, passwordEt;
     Button btn_sign_up;
     TextView loginText;
     FirebaseAuth fAuth;
@@ -42,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        usernameEt = findViewById(R.id.username);
+        tokenEt = findViewById(R.id.token);
         emailEt = findViewById(R.id.email);
         phone_numberEt = findViewById(R.id.phone_number);
         passwordEt = findViewById(R.id.password);
@@ -71,13 +71,16 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = emailEt.getText().toString().trim();
                 String password = passwordEt.getText().toString().trim();
-                String username = usernameEt.getText().toString().trim();
+                String token = tokenEt.getText().toString().trim();
                 String phone_number = phone_numberEt.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email)){
                     emailEt.setError("Email is Required");
                     return;
 
+                }
+                if(token.length()<11){
+                    tokenEt.setError("Token Must be >=11 Characters");
                 }
 
                 if(TextUtils.isEmpty(password)){
@@ -111,7 +114,7 @@ public class RegisterActivity extends AppCompatActivity {
                             customerID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference= fStore.collection("customer").document(customerID);
                             Map<String,Object> customer = new HashMap<>();
-                            customer.put("Username",username);
+                            customer.put("Token",token);
                             customer.put("Email",email);
                             customer.put("Password",password);
                             customer.put("Phone number",phone_number);

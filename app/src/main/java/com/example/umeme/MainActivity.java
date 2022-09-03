@@ -17,12 +17,12 @@ import android.widget.EditText;
 import com.example.umeme.Models.AccessToken;
 import com.example.umeme.Models.STKPush;
 import com.example.umeme.Services.DarajaApiClient;
-import com.squareup.okhttp.Response;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -54,20 +54,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mApiClient.setGetAccessToken(true);
         mApiClient.mpesaService().getAccessToken().enqueue(new Callback<AccessToken>() {
             @Override
-            public void onResponse(@NonNull Call<AccessToken> call, @NonNull Response<AccessToken> response) {
-
+            public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
                 if (response.isSuccessful()) {
                     mApiClient.setAuthToken(response.body().accessToken);
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<AccessToken> call, @NonNull Throwable t) {
+            public void onFailure(Call<AccessToken> call, Throwable t) {
 
             }
         });
     }
-
 
     @Override
     public void onClick(View view) {

@@ -1,4 +1,4 @@
-package com.example.umeme.Interceptor;
+package com.example.umeme.interceptor;
 
 import androidx.annotation.NonNull;
 

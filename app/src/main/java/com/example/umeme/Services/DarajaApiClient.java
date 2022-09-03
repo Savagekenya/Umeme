@@ -1,12 +1,13 @@
 package com.example.umeme.Services;
 
-import static com.androidstudy.daraja.util.Settings.CONNECT_TIMEOUT;
-import static com.androidstudy.daraja.util.Settings.READ_TIMEOUT;
-import static com.androidstudy.daraja.util.Settings.WRITE_TIMEOUT;
-import static com.example.umeme.Constants.BASE_URL;
 
-import com.example.umeme.Interceptor.AccessTokenInterceptor;
-import com.example.umeme.Interceptor.AuthInterceptor;
+import static com.example.umeme.Constants.BASE_URL;
+import static com.example.umeme.Constants.CONNECT_TIMEOUT;
+import static com.example.umeme.Constants.READ_TIMEOUT;
+import static com.example.umeme.Constants.WRITE_TIMEOUT;
+
+import com.example.umeme.interceptor.AccessTokenInterceptor;
+import com.example.umeme.interceptor.AuthInterceptor;
 
 import java.util.concurrent.TimeUnit;
 

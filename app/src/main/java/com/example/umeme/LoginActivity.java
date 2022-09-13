@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText meterEt, passwordEt;
+    EditText emailEt, passwordEt;
     Button submit_button;
     TextView signUpText,reset;
     FirebaseAuth fAuth;
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        meterEt = findViewById(R.id.meter);
+        emailEt = findViewById(R.id.email);
         passwordEt = findViewById(R.id.password);
         submit_button = findViewById(R.id.submit_button);
         signUpText = findViewById(R.id.sign_up_Text);
@@ -49,11 +49,11 @@ public class LoginActivity extends AppCompatActivity {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String meter = meterEt.getText().toString();
+                String email= emailEt.getText().toString();
                 String password = passwordEt.getText().toString();
 
-                if(TextUtils.isEmpty(meter)){
-                    meterEt.setError("Meter number is Required");
+                if(TextUtils.isEmpty(email)){
+                    emailEt.setError("Email is Required");
                     return;
                 }
 
@@ -61,22 +61,18 @@ public class LoginActivity extends AppCompatActivity {
                     passwordEt.setError("Password is Required");
                     return;
                 }
-                if (meter.length() == 11){
-                    passwordEt.setError("Password Must be = 11 Characters");
-                    return;
-                }
 
                 if (password.length()<6){
                     passwordEt.setError("Password Must be >= 6 Characters");
                     return;
                 }
-                fAuth.signInWithEmailAndPassword(meter,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(LoginActivity.this," Log in Successful.",Toast.LENGTH_SHORT).show();
 
-                            startActivity(new Intent(getApplicationContext(),Umeme.class));
+                            startActivity(new Intent(getApplicationContext(),DisplayActivity.class));
                         }else{
                             Toast.makeText(LoginActivity.this,"Error !" +task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                         }

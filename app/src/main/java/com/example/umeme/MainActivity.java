@@ -9,14 +9,25 @@ import static com.example.umeme.Constants.TRANSACTION_TYPE;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.umeme.Models.AccessToken;
 import com.example.umeme.Models.STKPush;
 import com.example.umeme.Services.DarajaApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,18 +38,22 @@ import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private DarajaApiClient mApiClient;
 
+    private DarajaApiClient mApiClient;
 
     @BindView(R.id.amount) EditText mAmount;
     @BindView(R.id.phone)EditText mPhone;
     @BindView(R.id.token) Button token;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
 
 
         mApiClient = new DarajaApiClient();
@@ -124,4 +139,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
 }

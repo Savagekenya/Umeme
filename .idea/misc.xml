@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/gabriel lewis/AndroidStudioProjects/Umeme/app/src/main/res/drawable/splashscreen.xml" value="0.28958333333333336" />
+        <entry key="..\:/Users/gabriel lewis/AndroidStudioProjects/Umeme/app/src/main/res/layout/activity_display.xml" value="0.2734375" />
         <entry key="..\:/Users/gabriel lewis/AndroidStudioProjects/Umeme/app/src/main/res/layout/activity_login.xml" value="0.2754782700075322" />
         <entry key="..\:/Users/gabriel lewis/AndroidStudioProjects/Umeme/app/src/main/res/layout/activity_main.xml" value="0.2734375" />
         <entry key="..\:/Users/gabriel lewis/AndroidStudioProjects/Umeme/app/src/main/res/layout/activity_register.xml" value="0.2734375" />
         <entry key="..\:/Users/gabriel lewis/AndroidStudioProjects/Umeme/app/src/main/res/layout/activity_token.xml" value="0.2734375" />
         <entry key="..\:/Users/gabriel lewis/AndroidStudioProjects/Umeme/app/src/main/res/layout/activity_umeme.xml" value="0.2734375" />
+        <entry key="..\:/Users/gabriel lewis/AndroidStudioProjects/Umeme/app/src/main/res/layout/items.xml" value="0.2734375" />
       </map>
     </option>
   </component>

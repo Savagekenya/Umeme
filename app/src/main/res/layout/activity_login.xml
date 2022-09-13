@@ -32,12 +32,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/meter"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:hint="Meter number"
+            android:hint="Enter Email"
             android:inputType="text"
             android:textColor="@android:color/black"
             android:textSize="17sp"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:hint="Password"
+            android:hint="Enter Password"
             android:inputType="textPassword"
             android:textColor="@android:color/black"
             android:textSize="17sp" />

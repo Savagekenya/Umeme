@@ -10,9 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -38,15 +40,15 @@ import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
     private DarajaApiClient mApiClient;
 
     @BindView(R.id.amount) EditText mAmount;
     @BindView(R.id.phone)EditText mPhone;
     @BindView(R.id.token) Button token;
+    String[] items ={"1","2","3","4","5","6","7"};
+    FirebaseFirestore fStore;
 
-
-
+    ArrayAdapter<String> adapterItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +60,58 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mApiClient = new DarajaApiClient();
         mApiClient.setIsDebug(true); //Set True to enable logging, false to disable.
+        fStore = FirebaseFirestore.getInstance();
+        adapterItems =new ArrayAdapter<String>(this,R.layout.list_item,items);
 
-        token.setOnClickListener(this);
+
+        token.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(),DisplayActivity.class);
+                startActivity(intent);
+                finish();
+                String phone = mPhone.getText().toString().trim();
+                String amount = mAmount.getText().toString().trim();
+
+
+                uploadData(phone,amount);
+                if (phone.isEmpty()){
+                    mPhone.setError("Value Required.");
+                }
+            }
+
+            private void uploadData(String phone, String amount) {
+                String id = UUID.randomUUID().toString();
+
+                Map<String,Object> lighting = new HashMap<>();
+                lighting.put("id",id);
+                lighting.put("Phone",phone);
+                lighting.put("Amount",amount);
+
+
+                fStore.collection("lighting").document(id).set(lighting)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                //called when data is added successfully
+                                Toast.makeText(MainActivity.this," Token Paid Successfully",Toast.LENGTH_SHORT).show();
+
+
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                //called when there is an error
+                                Toast.makeText(MainActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+
+
+                            }
+                        });
+
+            }
+        });
 
         getAccessToken();
 
@@ -69,18 +121,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mApiClient.setGetAccessToken(true);
         mApiClient.mpesaService().getAccessToken().enqueue(new Callback<AccessToken>() {
             @Override
-            public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
+            public void onResponse(@NonNull Call<AccessToken> call, @NonNull Response<AccessToken> response) {
+
                 if (response.isSuccessful()) {
                     mApiClient.setAuthToken(response.body().accessToken);
                 }
             }
 
             @Override
-            public void onFailure(Call<AccessToken> call, Throwable t) {
+            public void onFailure(@NonNull Call<AccessToken> call, @NonNull Throwable t) {
 
             }
         });
     }
+
 
     @Override
     public void onClick(View view) {
@@ -105,16 +159,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 PARTYB,
                 Utils.sanitizePhoneNumber(phone_number),
                 CALLBACKURL,
-                "Umeme", //Account reference
-                "Umeme STK PUSH"  //Transaction description
+                "SmartLoan Ltd", //Account reference
+                "SmartLoan STK PUSH by TDBSoft"  //Transaction description
         );
 
         mApiClient.setGetAccessToken(false);
 
-        //Sending the data to the Mpesa API
+        //Sending the data to the Mpesa API, remember to remove the logging when in production.
         mApiClient.mpesaService().sendPush(stkPush).enqueue(new Callback<STKPush>() {
             @Override
-            public void onResponse(@NonNull Call<STKPush> call, @NonNull retrofit2.Response<STKPush> response) {
+            public void onResponse(@NonNull Call<STKPush> call, @NonNull Response<STKPush> response) {
 
                 try {
                     if (response.isSuccessful()) {
@@ -139,5 +193,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
-
 }

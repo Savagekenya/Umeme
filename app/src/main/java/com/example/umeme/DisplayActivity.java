@@ -1,5 +1,6 @@
 package com.example.umeme;
 
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -65,21 +66,21 @@ public class DisplayActivity extends AppCompatActivity {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                        if (error != null) {
-
-                            Log.e("Firestore error", error.getMessage());
+                        if(error !=null){
+                            Log.e("Firestore Error",error.getMessage());
                             return;
                         }
 
-                        for (DocumentChange doc : value.getDocumentChanges()) {
+                        for(DocumentChange doc: value.getDocumentChanges()){
 
-                            if (doc.getType() == DocumentChange.Type.ADDED) {
+                            if (doc.getType() == DocumentChange.Type.ADDED){
                                 list.add(doc.getDocument().toObject(User.class));
                             }
-                            myAdapter.notifyDataSetChanged();
                         }
+
                     }
                 });
+
 
         }
     }

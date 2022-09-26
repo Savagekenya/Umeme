@@ -2,12 +2,11 @@ package com.example.umeme;
 
 public class User {
 
-    String Phone,Amount,Meter;
+    String Phone,Amount;
 
-    public User(String phone, String amount, String meter) {
+    public User(String phone, String amount) {
         Phone = phone;
         Amount = amount;
-        Meter = meter;
     }
 
     public String getPhone() {
@@ -26,11 +25,7 @@ public class User {
         Amount = amount;
     }
 
-    public String getMeter() {
-        return Meter;
-    }
+    public User() {
 
-    public void setMeter(String meter) {
-        Meter = meter;
     }
 }

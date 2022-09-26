@@ -139,14 +139,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view== token){
-            String phone_number = mPhone.getText().toString();
+            String phone = mPhone.getText().toString();
             String amount = mAmount.getText().toString();
-            performSTKPush(phone_number,amount);
+            performSTKPush(phone,amount);
         }
     }
 
 
-    public void performSTKPush(String phone_number,String amount) {
+    public void performSTKPush(String phone,String amount) {
 
         String timestamp = Utils.getTimestamp();
         STKPush stkPush = new STKPush(
@@ -155,12 +155,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 timestamp,
                 TRANSACTION_TYPE,
                 String.valueOf(amount),
-                Utils.sanitizePhoneNumber(phone_number),
+                Utils.sanitizePhoneNumber(phone),
                 PARTYB,
-                Utils.sanitizePhoneNumber(phone_number),
+                Utils.sanitizePhoneNumber(phone),
                 CALLBACKURL,
-                "SmartLoan Ltd", //Account reference
-                "SmartLoan STK PUSH by TDBSoft"  //Transaction description
+                "Umeme", //Account reference
+                "Umeme by Mugane"  //Transaction description
         );
 
         mApiClient.setGetAccessToken(false);

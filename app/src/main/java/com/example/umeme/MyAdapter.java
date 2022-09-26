@@ -14,9 +14,7 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-
     Context context;
-
     ArrayList<User> list;
 
     public MyAdapter(Context context, ArrayList<User> list) {
@@ -26,38 +24,36 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         View v = LayoutInflater.from(context).inflate(R.layout.items,parent,false);
+
         return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        User user = list.get(position);
-        holder.phone.setText(user.Phone);
-        holder.amount.setText(user.Amount);
-        holder.meter.setText(user.Meter);
+    public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
 
+        User user = list.get(position);
+
+        holder.Phone.setText(user.Phone);
+        holder.Amount.setText(user.Amount);
 
     }
 
     @Override
     public int getItemCount() {
-
         return list.size();
     }
-
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView phone ,amount,meter;
 
-
+        TextView Amount,Phone;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            Amount = itemView.findViewById(R.id.amount);
+            Phone = itemView.findViewById(R.id.phone);
 
-            phone = itemView.findViewById(R.id.phone);
-            amount = itemView.findViewById(R.id.amount);
-            meter = itemView.findViewById(R.id.meter);
         }
     }
 }

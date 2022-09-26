@@ -35,15 +35,18 @@ public class DisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
 
-        recyclerView = findViewById(R.id.userlist);
+
+        recyclerView = findViewById(R.id.recyclerview);
         token2 = findViewById(R.id.token2);
-        fStore = FirebaseFirestore.getInstance();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+        fStore = FirebaseFirestore.getInstance();
         list = new ArrayList<>();
-        myAdapter = new MyAdapter(this,list);
+        myAdapter = new MyAdapter(DisplayActivity.this,list);
         recyclerView.setAdapter(myAdapter);
+
 
         token2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,25 +64,31 @@ public class DisplayActivity extends AppCompatActivity {
 
     private void EventChangeListener() {
 
-        fStore.collection("lighting").orderBy("Amount", Query.Direction.ASCENDING)
+        fStore.collection("lighting")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
                         if(error !=null){
-                            Log.e("Firestore Error",error.getMessage());
+
+                            Log.e("Firestore error",error.getMessage());
                             return;
                         }
 
-                        for(DocumentChange doc: value.getDocumentChanges()){
+                        for (DocumentChange dc : value.getDocumentChanges()){
 
-                            if (doc.getType() == DocumentChange.Type.ADDED){
-                                list.add(doc.getDocument().toObject(User.class));
+                            if (dc.getType() == DocumentChange.Type.ADDED){
+
+                                list.add(dc.getDocument().toObject(User.class));
                             }
+
+                            myAdapter.notifyDataSetChanged();
+
                         }
 
                     }
                 });
+
 
 
         }

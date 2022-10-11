@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
     app:cardCornerRadius="8dp"
@@ -22,10 +22,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Amount:"
+                android:text="Units:"
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                />
 
             <TextView
                 android:id="@+id/amount"
@@ -34,8 +34,7 @@
                 android:layout_marginLeft="8dp"
                 android:text="Light"
                 android:textColor="@color/black"
-                android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textSize="26sp" />
 
         </LinearLayout>
 
@@ -51,7 +50,7 @@
                 android:text="Phone Number:"
                 android:textColor="@color/black"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                />
 
             <TextView
                 android:id="@+id/phone"
@@ -60,8 +59,7 @@
                 android:layout_marginLeft="8dp"
                 android:text="Light"
                 android:textColor="@color/black"
-                android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textSize="26sp" />
 
         </LinearLayout>
 

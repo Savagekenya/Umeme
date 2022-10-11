@@ -8,10 +8,16 @@ import static com.example.umeme.Constants.TRANSACTION_TYPE;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
-import android.app.Activity;
+
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
-import android.graphics.Bitmap;
+
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -50,11 +56,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     ArrayAdapter<String> adapterItems;
 
+    NotificationManagerCompat notificationManagerCompat;
+    Notification notification;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("myCh","My Channel", NotificationManager.IMPORTANCE_DEFAULT);
+
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+
+        }
+        NotificationCompat.Builder builder =new NotificationCompat.Builder(this,"myCh")
+                .setSmallIcon(android.R.drawable.stat_notify_sync)
+                .setContentTitle("Token Paid to Umeme")
+                .setContentText("Thank you For Using UMEME");
+
+        notification = builder.build();
+
+        notificationManagerCompat = NotificationManagerCompat.from(this);
 
 
 
@@ -79,6 +105,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (phone.isEmpty()){
                     mPhone.setError("Value Required.");
                 }
+
+                notificationManagerCompat.notify(1,notification);
             }
 
             private void uploadData(String phone, String amount) {

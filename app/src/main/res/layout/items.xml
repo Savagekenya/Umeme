@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:text="Units:"
                 android:textColor="@color/black"
+                android:fontFamily="@font/fuzzybubbles_bold"
                 android:textSize="26sp"
                 />
 
@@ -33,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:text="Light"
+                android:fontFamily="@font/fuzzybubbles_bold"
                 android:textColor="@color/black"
                 android:textSize="26sp" />
 
@@ -49,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:text="Phone Number:"
                 android:textColor="@color/black"
+                android:fontFamily="@font/fuzzybubbles_bold"
                 android:textSize="26sp"
                 />
 
@@ -58,6 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:text="Light"
+                android:fontFamily="@font/fuzzybubbles_bold"
                 android:textColor="@color/black"
                 android:textSize="26sp" />
 

@@ -53,7 +53,7 @@
         android:layout_height="37dp"
         android:layout_margin="30dp"
         android:layout_marginTop="30dp"
-        android:background="#00008B"
+        android:background="@drawable/background"
         android:text="Reset Password"
         android:textAllCaps="false"
         android:textColor="#FFEF00"

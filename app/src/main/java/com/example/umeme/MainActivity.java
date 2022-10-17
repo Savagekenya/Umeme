@@ -75,8 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         NotificationCompat.Builder builder =new NotificationCompat.Builder(this,"myCh")
                 .setSmallIcon(android.R.drawable.stat_notify_sync)
-                .setContentTitle("Token Paid to Umeme")
-                .setContentText("Thank you For Using UMEME");
+                .setContentTitle("UMEME")
+                .setContentText("Token Paid .Thank you For Using UMEME");
 
         notification = builder.build();
 

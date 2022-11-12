@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         NotificationCompat.Builder builder =new NotificationCompat.Builder(this,"myCh")
                 .setSmallIcon(android.R.drawable.stat_notify_sync)
                 .setContentTitle("UMEME")
-                .setContentText("Token Paid .Thank you For Using UMEME");
+                .setContentText("Token Paid .Thank you For Using Umeme");
 
         notification = builder.build();
 
@@ -104,6 +104,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 uploadData(phone,amount);
                 if (phone.isEmpty()){
                     mPhone.setError("Value Required.");
+                }
+                if (amount.length()<3){
+                    mAmount.setError("Cannot buy token of less amount");
+                    return;
+
                 }
 
                 notificationManagerCompat.notify(1,notification);

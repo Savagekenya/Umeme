@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Umeme"
 include ':app'
+include ':app:admin'

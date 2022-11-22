@@ -25,16 +25,21 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        emailEt = findViewById(R.id.email);
+        emailEt = findViewById(R.id.profileemail);
         passwordEt = findViewById(R.id.password);
         submit_button = findViewById(R.id.submit_button);
         signUpText = findViewById(R.id.sign_up_Text);
         reset = findViewById(R.id.reset);
         fAuth =  FirebaseAuth.getInstance();
+
+
+
 
 
         signUpText.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Toast.makeText(LoginActivity.this," Log in Successful.",Toast.LENGTH_SHORT).show();
 
-                            startActivity(new Intent(getApplicationContext(),DisplayActivity.class));
+                            startActivity(new Intent(getApplicationContext(),LandingActivity.class));
                         }else{
                             Toast.makeText(LoginActivity.this,"Error !" +task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                         }

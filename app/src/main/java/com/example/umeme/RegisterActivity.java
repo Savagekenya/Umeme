@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText tokenEt,emailEt,phone_numberEt, passwordEt;
+    EditText tokenEt,emailEt,phoneEt, passwordEt;
     Button btn_sign_up;
     TextView loginText;
     FirebaseAuth fAuth;
@@ -43,8 +43,8 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         tokenEt = findViewById(R.id.token);
-        emailEt = findViewById(R.id.email);
-        phone_numberEt = findViewById(R.id.phone_number);
+        emailEt = findViewById(R.id.profileemail);
+        phoneEt = findViewById(R.id.phone);
         passwordEt = findViewById(R.id.password);
         btn_sign_up = findViewById(R.id.btn_sign_up);
         loginText =findViewById(R.id.loginText);
@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = emailEt.getText().toString().trim();
                 String password = passwordEt.getText().toString().trim();
                 String token = tokenEt.getText().toString().trim();
-                String phone_number = phone_numberEt.getText().toString().trim();
+                String phone = phoneEt.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email)){
                     emailEt.setError("Email is Required");
@@ -117,7 +117,7 @@ public class RegisterActivity extends AppCompatActivity {
                             customer.put("Token",token);
                             customer.put("Email",email);
                             customer.put("Password",password);
-                            customer.put("Phone number",phone_number);
+                            customer.put("phoneNumber",phone);
 
 
                             documentReference.set(customer).addOnSuccessListener(new OnSuccessListener<Void>() {

@@ -36,7 +36,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         User user = list.get(position);
 
-        holder.Phone.setText(user.Phone);
+
         holder.Amount.setText(user.Amount);
 
     }
@@ -48,11 +48,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
 
-        TextView Amount,Phone;
+        TextView Amount;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             Amount = itemView.findViewById(R.id.amount);
-            Phone = itemView.findViewById(R.id.phone);
+
 
         }
     }

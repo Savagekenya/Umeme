@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getApplicationContext(),DisplayActivity.class);
+                Intent intent = new Intent(getApplicationContext(),LandingActivity.class);
                 startActivity(intent);
                 finish();
                 String phone = mPhone.getText().toString().trim();

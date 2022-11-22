@@ -3,4 +3,5 @@
     <string name="sign_up"><u>Sign Up</u></string>
     <string name="already_have_an_account_login_here"><u>Login Here</u></string>
     <string name="reset">forgot password?</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

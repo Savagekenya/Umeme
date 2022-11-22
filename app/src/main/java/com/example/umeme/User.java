@@ -2,19 +2,11 @@ package com.example.umeme;
 
 public class User {
 
-    String Phone,Amount;
+    String Amount;
 
-    public User(String phone, String amount) {
-        Phone = phone;
+    public User( String amount) {
+
         Amount = amount;
-    }
-
-    public String getPhone() {
-        return Phone;
-    }
-
-    public void setPhone(String phone) {
-        Phone = phone;
     }
 
     public String getAmount() {

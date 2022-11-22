@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DisplayActivity">
+    tools:context=".LandingActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
@@ -20,18 +20,14 @@
         android:id="@+id/token2"
         android:layout_width="291dp"
         android:layout_height="43dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
-        android:text="Buy Token"
+        android:layout_marginTop="30dp"
         android:background="@drawable/background"
         android:fontFamily="@font/fuzzybubbles_bold"
+        android:text="Buy Token"
         android:textColor="#FFEF00"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.391"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerview"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerview" />
 
     <TextView
         android:id="@+id/textView2"
@@ -39,7 +35,7 @@
         android:layout_height="64dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/fuzzybubbles_bold"
-        android:text="Welcome to your UMEME Account"
+        android:text=" UMEME Report"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="25sp"
@@ -47,4 +43,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

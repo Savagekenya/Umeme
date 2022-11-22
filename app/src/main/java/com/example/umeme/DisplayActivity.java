@@ -27,7 +27,7 @@ public class DisplayActivity extends AppCompatActivity {
     MyAdapter myAdapter;
     ArrayList<User> list;
     FirebaseFirestore fStore;
-    Button token2;
+
 
 
     @Override
@@ -37,7 +37,6 @@ public class DisplayActivity extends AppCompatActivity {
 
 
         recyclerView = findViewById(R.id.recyclerview);
-        token2 = findViewById(R.id.token2);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -48,14 +47,7 @@ public class DisplayActivity extends AppCompatActivity {
         recyclerView.setAdapter(myAdapter);
 
 
-        token2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent= new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
 
         EventChangeListener();
 

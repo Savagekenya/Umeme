@@ -4,8 +4,8 @@
     android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
-    app:cardCornerRadius="8dp"
-    android:layout_margin="16dp">
+    app:cardCornerRadius="12dp"
+    android:layout_margin="20dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -26,13 +26,13 @@
                 android:text="Phone number:"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                />
+                android:layout_marginLeft="15dp" />
 
             <TextView
                 android:id="@+id/phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="15dp"
                 android:text="Light"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -51,13 +51,13 @@
                 android:text="Token:"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                />
+                android:layout_marginLeft="15dp" />
 
             <TextView
                 android:id="@+id/token"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="15dp"
                 android:text="Light"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -76,13 +76,13 @@
                 android:text="Email:"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                />
+                android:layout_marginLeft="15dp"/>
 
             <TextView
                 android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="15dp"
                 android:text="Light"
                 android:textColor="@color/black"
                 android:textSize="20sp" />

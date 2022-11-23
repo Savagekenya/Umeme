@@ -31,14 +31,14 @@ public class LandingActivity extends AppCompatActivity {
     ArrayList<User> list;
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
-    String customerID;
+
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display);
+        setContentView(R.layout.activity_landing);
 
 
         recyclerView = findViewById(R.id.recyclerview);
@@ -62,7 +62,6 @@ public class LandingActivity extends AppCompatActivity {
     }
 
     private void EventChangeListener() {
-        customerID = fAuth.getCurrentUser().getUid();
         fStore.collection("lighting")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
